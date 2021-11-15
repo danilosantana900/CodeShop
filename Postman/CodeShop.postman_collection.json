@@ -11,6 +11,16 @@
 				{
 					"name": "Usuarios",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6Ik1lbGlzc2EiLCJyb2xlIjoiQWRtaW4iLCJuYmYiOjE2MzY5OTk0MTEsImV4cCI6MTYzNzAwMzAxMSwiaWF0IjoxNjM2OTk5NDExfQ.TbV_EoSAIiIeB8F83tQsc1qPagUDdhO9Y8qTJO48cV8",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
@@ -23,6 +33,162 @@
 							"path": [
 								"api",
 								"Usuario"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "account",
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 2,\r\n    \"nome\": \"Melissa\",\r\n    \"senha\": \"senha4\",\r\n    \"cargo\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4936/api/account/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4936",
+							"path": [
+								"api",
+								"account",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "anonymous",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:4936/api/account/anonymous",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4936",
+							"path": [
+								"api",
+								"account",
+								"anonymous"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "authenticated",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IkRhbmlsbyIsInJvbGUiOiIiLCJuYmYiOjE2MzY5OTg5NzQsImV4cCI6MTYzNzAwMjU3NCwiaWF0IjoxNjM2OTk4OTc0fQ.OO2yS_UkOzZjNeaO93aQoqBQjrzdmmkqK6yfp6N3hK0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4936/api/account/authenticated",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4936",
+							"path": [
+								"api",
+								"account",
+								"authenticated"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "funcionario",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IkRhbmlsbyIsInJvbGUiOiIiLCJuYmYiOjE2MzY5OTg5NzQsImV4cCI6MTYzNzAwMjU3NCwiaWF0IjoxNjM2OTk4OTc0fQ.OO2yS_UkOzZjNeaO93aQoqBQjrzdmmkqK6yfp6N3hK0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4936/api/account/funcionario",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4936",
+							"path": [
+								"api",
+								"account",
+								"funcionario"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cliente",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IkRhbmlsbyIsInJvbGUiOiIiLCJuYmYiOjE2MzY5OTg5NzQsImV4cCI6MTYzNzAwMjU3NCwiaWF0IjoxNjM2OTk4OTc0fQ.OO2yS_UkOzZjNeaO93aQoqBQjrzdmmkqK6yfp6N3hK0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4936/api/account/cliente",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4936",
+							"path": [
+								"api",
+								"account",
+								"cliente"
 							]
 						}
 					},
