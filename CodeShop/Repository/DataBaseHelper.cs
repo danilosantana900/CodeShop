@@ -13,32 +13,36 @@ namespace CodeShop.Repository
         public static void SeedData(this ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Usuario>().HasData(new Usuario[] {
-                new Usuario(){
+                new Usuario()
+                {
                     Id = 1,
                     Nome = "Danilo",
                     Senha = "senha1",
                     Cargo = ""
                 },
 
-                new Usuario(){
+                new Usuario()
+                {
                     Id = 2,
                     Nome = "Debora",
                     Senha = "senha2",
                     Cargo = "Funcionario"
                 },
 
-                new Usuario(){
+                new Usuario()
+                {
                     Id = 3,
                     Nome = "Joao",
                     Senha = "senha3",
                     Cargo = "Cliente"
                 },
 
-                new Usuario(){
+                new Usuario()
+                {
                     Id = 4,
                     Nome = "Melissa",
                     Senha = "senha4",
-                    Cargo = "Funcionario"
+                    Cargo = "Admin"
                 }
             });
         }

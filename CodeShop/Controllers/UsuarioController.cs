@@ -1,4 +1,5 @@
 ﻿using CodeShop.Repository.DataModel;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 
@@ -9,6 +10,7 @@ namespace CodeShop.Controllers
     public class UsuarioController : ControllerBase
     {
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public IActionResult Get([FromServices] DataBase dataBase)
         {
             var result = dataBase.Usuario.ToList();
