@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "3b9abda4-e765-49fc-baa6-95e204b207ad",
+		"_postman_id": "0779f822-d85a-4fc5-907c-06ad0dde6857",
 		"name": "CodeShop",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -189,6 +189,142 @@
 								"api",
 								"account",
 								"cliente"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Carrinho",
+			"item": [
+				{
+					"name": "Adicionar Produtos",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6Ik1lbGlzc2EiLCJyb2xlIjoiQWRtaW4iLCJuYmYiOjE2MzY5OTk0MTEsImV4cCI6MTYzNzAwMzAxMSwiaWF0IjoxNjM2OTk5NDExfQ.TbV_EoSAIiIeB8F83tQsc1qPagUDdhO9Y8qTJO48cV8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Itens\":[\r\n        {\r\n            \"Produto\": {\r\n                \"Nome\": \"Notebook\",\r\n                \"Descricao\": \"Notebook Dell\",\r\n                \"Valor\": 2500\r\n            },\r\n            \"Quantidade\": 5\r\n        },\r\n        {\r\n            \"Produto\": {\r\n                \"Nome\": \"Fone de Ouvido\",\r\n                \"Descricao\": \"Fone de Ouvido Gamer\",\r\n                \"Preco\": 360\r\n            },\r\n            \"Quantidade\": 3\r\n        },\r\n        {\r\n            \"Produto\": {\r\n                \"Nome\": \"Microfone\",\r\n                \"Descricao\": \"Microfone Gamer\",\r\n                \"Preco\": 450\r\n            },\r\n            \"Quantidade\": 1\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/Carrinho",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"Carrinho"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remover Item",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6Ik1lbGlzc2EiLCJyb2xlIjoiQWRtaW4iLCJuYmYiOjE2MzY5OTk0MTEsImV4cCI6MTYzNzAwMzAxMSwiaWF0IjoxNjM2OTk5NDExfQ.TbV_EoSAIiIeB8F83tQsc1qPagUDdhO9Y8qTJO48cV8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/Carrinho/1/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"Carrinho",
+								"1",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Esvaziar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6Ik1lbGlzc2EiLCJyb2xlIjoiQWRtaW4iLCJuYmYiOjE2MzY5OTk0MTEsImV4cCI6MTYzNzAwMzAxMSwiaWF0IjoxNjM2OTk5NDExfQ.TbV_EoSAIiIeB8F83tQsc1qPagUDdhO9Y8qTJO48cV8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/Carrinho",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"Carrinho"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Produtos",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6Ik1lbGlzc2EiLCJyb2xlIjoiQWRtaW4iLCJuYmYiOjE2MzY5OTk0MTEsImV4cCI6MTYzNzAwMzAxMSwiaWF0IjoxNjM2OTk5NDExfQ.TbV_EoSAIiIeB8F83tQsc1qPagUDdhO9Y8qTJO48cV8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/Carrinho",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"Carrinho"
 							]
 						}
 					},
