@@ -62,7 +62,7 @@ namespace CodeShop.Repository
                 },
                 new Produto()
                 {
-                    Id = 1,
+                    Id = 2,
                     Nome = "Mouse",
                     Descricao = "Mouse preto",
                     Valor = 52.50f

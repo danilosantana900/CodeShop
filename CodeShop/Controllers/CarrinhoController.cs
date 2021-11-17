@@ -13,17 +13,15 @@ namespace CodeShop.Controllers
         [HttpGet]
         public IActionResult Get([FromServices] DataBase dataBase)
         {
-            return Ok();
-            //var result = dataBase.Carrinho.Include(x => x.Itens).ToList().Include
-
-            //if (result.Any())
-            //{
-            //    return Ok(result);
-            //}
-            //else
-            //{
-            //    return StatusCode(204, string.Empty);
-            //}
+            var result = dataBase.Carrinho.Include(x => x.Itens).ThenInclude(i => i.Produto).ToList();
+            if (result.Any())
+            {
+                return Ok(result);
+            }
+            else
+            {
+                return StatusCode(204, string.Empty);
+            }
         }
 
         [HttpPost]
@@ -36,12 +34,13 @@ namespace CodeShop.Controllers
             return Ok();
         }
 
-        [HttpDelete("{id}")]
-        public IActionResult Delete([FromRoute] int id, [FromServices] DataBase dataBase)
+        [HttpDelete("{idCarrinho}/{idItem}")]
+        public IActionResult Delete([FromRoute] int idCarrinho, [FromRoute] int idItem, [FromServices] DataBase dataBase)
         {
-            var itemRemover = dataBase.Carrinho.Select(x => x.Itens.Where(x => x.Id == id));
+            var carrinhoRemover = dataBase.Carrinho.Where(x => x.Id == idCarrinho);
+            var itemRemover = carrinhoRemover.Select(x => x.Itens.Where(x => x.Id == idItem).FirstOrDefault());
 
-            //dataBase.Carrinho.RemoveRange(itemRemover);
+            dataBase.Item.RemoveRange(itemRemover);
 
             dataBase.SaveChanges();
 
