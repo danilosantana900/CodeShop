@@ -51,6 +51,23 @@ namespace CodeShop.Repository
                     Cargo = "Admin"
                 }
             });
+
+            modelBuilder.Entity<Produto>().HasData(new Produto[]{
+                new Produto()
+                {
+                    Id = 1,
+                    Nome = "Teclado",
+                    Descricao = "Melhor teclado gamer do mercado",
+                    Valor = 212.50f
+                },
+                new Produto()
+                {
+                    Id = 1,
+                    Nome = "Mouse",
+                    Descricao = "Mouse preto",
+                    Valor = 52.50f
+                }
+            });
         }
     }
 }

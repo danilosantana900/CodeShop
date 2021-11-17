@@ -13,16 +13,17 @@ namespace CodeShop.Controllers
         [HttpGet]
         public IActionResult Get([FromServices] DataBase dataBase)
         {
-            var result = dataBase.Carrinho.Include(x => x.Itens).ToList().Include
+            return Ok();
+            //var result = dataBase.Carrinho.Include(x => x.Itens).ToList().Include
 
-            if (result.Any())
-            {
-                return Ok(result);
-            }
-            else
-            {
-                return StatusCode(204, string.Empty);
-            }
+            //if (result.Any())
+            //{
+            //    return Ok(result);
+            //}
+            //else
+            //{
+            //    return StatusCode(204, string.Empty);
+            //}
         }
 
         [HttpPost]
@@ -40,7 +41,7 @@ namespace CodeShop.Controllers
         {
             var itemRemover = dataBase.Carrinho.Select(x => x.Itens.Where(x => x.Id == id));
 
-            dataBase.Carrinho.RemoveRange(itemRemover);
+            //dataBase.Carrinho.RemoveRange(itemRemover);
 
             dataBase.SaveChanges();
 
