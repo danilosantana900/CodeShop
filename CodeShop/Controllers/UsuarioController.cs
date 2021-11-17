@@ -10,7 +10,6 @@ namespace CodeShop.Controllers
     public class UsuarioController : ControllerBase
     {
         [HttpGet]
-        [Authorize(Roles = "Admin")]
         public IActionResult Get([FromServices] DataBase dataBase)
         {
             var result = dataBase.Usuario.ToList();

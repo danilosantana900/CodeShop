@@ -8,6 +8,12 @@ namespace CodeShop.Repository
         public static void ModelCreate(this ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Usuario>().HasKey(x => x.Id);
+
+            modelBuilder.Entity<Carrinho>().HasKey(x => x.Id);
+
+            modelBuilder.Entity<Item>().HasKey(x => x.Id);
+
+            modelBuilder.Entity<Produto>().HasKey(x => x.Id);
         }
 
         public static void SeedData(this ModelBuilder modelBuilder)

@@ -13,5 +13,8 @@ namespace CodeShop.Repository.DataModel
         }
 
         public DbSet<Usuario> Usuario { get; set; }
+        public DbSet<Carrinho> Carrinho { get; set; }
+        public DbSet<Item> Item { get; set; }
+        public DbSet<Produto> Produto { get; set; }
     }
 }
