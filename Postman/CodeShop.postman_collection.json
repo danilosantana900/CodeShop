@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "e668e478-aef7-4bbd-b8ab-8d649a99cbf1",
+		"_postman_id": "8078bb2a-dbd3-4291-a5b0-d615506a790d",
 		"name": "CodeShop",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -448,7 +448,73 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IkRlYm9yYSIsInJvbGUiOiJGdW5jaW9uYXJpbyIsIm5iZiI6MTYzNzI4NDY2MywiZXhwIjoxNjM3Mjg4MjYzLCJpYXQiOjE2MzcyODQ2NjN9.KVMOP7n8_3LhQlxlYwfuBrPGCpq8wIqplN-XAaX01c0",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IkRlYm9yYSIsInJvbGUiOiJGdW5jaW9uYXJpbyIsIm5iZiI6MTYzNzM1MzA0MiwiZXhwIjoxNjM3MzU2NjQyLCJpYXQiOjE2MzczNTMwNDJ9.B_3oIDl8_SRxfFc71vfEOeSPk1DJSwvoNnG280NTMNU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/Produto",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"Produto"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Produto Nome",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IkRlYm9yYSIsInJvbGUiOiJGdW5jaW9uYXJpbyIsIm5iZiI6MTYzNzM1MzA0MiwiZXhwIjoxNjM3MzU2NjQyLCJpYXQiOjE2MzczNTMwNDJ9.B_3oIDl8_SRxfFc71vfEOeSPk1DJSwvoNnG280NTMNU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/Produto?nomeProduto=Mouse",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"Produto"
+							],
+							"query": [
+								{
+									"key": "nomeProduto",
+									"value": "Mouse"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Produtos Copy 2",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IkRlYm9yYSIsInJvbGUiOiJGdW5jaW9uYXJpbyIsIm5iZiI6MTYzNzM1MzA0MiwiZXhwIjoxNjM3MzU2NjQyLCJpYXQiOjE2MzczNTMwNDJ9.B_3oIDl8_SRxfFc71vfEOeSPk1DJSwvoNnG280NTMNU",
 									"type": "string"
 								}
 							]
@@ -478,7 +544,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6Ik1lbGlzc2EiLCJyb2xlIjoiQWRtaW4iLCJuYmYiOjE2MzY5OTk0MTEsImV4cCI6MTYzNzAwMzAxMSwiaWF0IjoxNjM2OTk5NDExfQ.TbV_EoSAIiIeB8F83tQsc1qPagUDdhO9Y8qTJO48cV8",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IkRlYm9yYSIsInJvbGUiOiJGdW5jaW9uYXJpbyIsIm5iZiI6MTYzNzM1MzA0MiwiZXhwIjoxNjM3MzU2NjQyLCJpYXQiOjE2MzczNTMwNDJ9.B_3oIDl8_SRxfFc71vfEOeSPk1DJSwvoNnG280NTMNU",
 									"type": "string"
 								}
 							]
@@ -487,7 +553,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"Nome\": \"Notebook\",\r\n    \"Descricao\": \"Notebook Dell\",\r\n    \"Valor\": 2500\r\n}\r\n",
+							"raw": "{\r\n    \"Nome\": \"PC\",\r\n    \"Descricao\": \"Notebook Dell\",\r\n    \"Valor\": 2500\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"

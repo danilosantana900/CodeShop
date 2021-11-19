@@ -15,30 +15,27 @@ namespace CodeShop.Controllers
     {
         [HttpGet]
         [Authorize(Roles = "Funcionario")]
-        public IActionResult GetAll([FromServices] DataBase dataBase)
+        public IActionResult GetAll([FromQuery] string nomeProduto, [FromServices] DataBase dataBase)
         {
-            var result = dataBase.Produto.ToList();
-            if (result.Any())
+            
+            if (string.IsNullOrWhiteSpace(nomeProduto))
             {
-                return Ok(result);
+                return Ok(dataBase.Produto.ToList());
             }
             else
             {
-                return StatusCode(204, string.Empty);
+                var resultByName = dataBase.Produto.Where(x => x.Nome == nomeProduto).ToList();
+
+                if (resultByName.Any())
+                {
+                    return Ok(resultByName);
+                }
+                else
+                {
+                    return StatusCode(204, string.Empty);
+                }
             }
         }
-
-        //[HttpGet("{name}")]
-        //[Authorize(Roles = "Funcionario")]
-        //public IActionResult GetByName([FromRoute] string name, [FromServices] DataBase dataBase)
-        //{
-        //    var result = dataBase.Produto.Where(x => x.Nome == name);
-
-        //    if (result.Any())
-        //        return Ok(result);
-        //    else
-        //        return StatusCode(204, string.Empty);
-        //}
 
         [HttpGet("{id}")]
         [Authorize(Roles = "Funcionario")]
@@ -52,16 +49,23 @@ namespace CodeShop.Controllers
                 return StatusCode(204, string.Empty);
         }
 
-
-        //endpoint
+            
         [HttpPost]
+        [Authorize(Roles = "Funcionario")]
         public IActionResult Post([FromBody] Produto produto, [FromServices] DataBase dataBase)
         {
-            dataBase.Add(produto);
+            var produtoExiste = dataBase.Produto.Where(x => x.Nome == produto.Nome).ToList(); ;
 
-            dataBase.SaveChanges();
-
-            return Ok();
+            if (produtoExiste.Any())
+            {
+                return StatusCode(409, "Já existe um produto com esse nome na loja.");
+            }
+            else
+            {
+                dataBase.Add(produto);
+                dataBase.SaveChanges();
+                return Ok();
+            }
         }
 
 
@@ -80,11 +84,7 @@ namespace CodeShop.Controllers
             if (productDb == null)
                 return StatusCode(404, $"Product id {id} does not exist");
 
-            productDb.Nome = produto.Nome;
-
             productDb.Descricao = produto.Descricao;
-
-            productDb.Valor = produto.Valor;
 
             dataBase.Update(productDb);
 
@@ -98,13 +98,25 @@ namespace CodeShop.Controllers
         [Authorize(Roles = "Funcionario")]
         public IActionResult Delete([FromRoute] int id, [FromServices] DataBase dataBase)
         {
-            var productToRemove = dataBase.Produto.Where(x => x.Id == id).FirstOrDefault();
 
-            dataBase.Produto.RemoveRange(productToRemove);
+            try
+            {
+                var productToRemove = dataBase.Produto.Where(x => x.Id == id).FirstOrDefault();
 
-            dataBase.SaveChanges();
+                if (productToRemove == null)
+                    return StatusCode(404, $"Product id {id} does not exist");
 
-            return Ok();
+                dataBase.Produto.RemoveRange(productToRemove);
+
+                dataBase.SaveChanges();
+
+                return Ok();
+            }
+            catch
+            {
+                return StatusCode(500, "Erro.");
+            }
+
         }
     }
 
