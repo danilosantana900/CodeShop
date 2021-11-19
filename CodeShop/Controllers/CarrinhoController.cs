@@ -11,9 +11,11 @@ namespace CodeShop.Controllers
     public class CarrinhoController : ControllerBase
     {
         [HttpGet]
+        [Authorize(Roles = "Cliente")]
         public IActionResult Get([FromServices] DataBase dataBase)
         {
             var result = dataBase.Carrinho.Include(x => x.Itens).ThenInclude(i => i.Produto).ToList();
+
             if (result.Any())
             {
                 return Ok(result);
@@ -25,6 +27,7 @@ namespace CodeShop.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Cliente")]
         public IActionResult Post([FromBody] Carrinho carrinho, [FromServices] DataBase dataBase)
         {
             dataBase.Add(carrinho);
@@ -35,6 +38,7 @@ namespace CodeShop.Controllers
         }
 
         [HttpDelete("{idCarrinho}/{idItem}")]
+        [Authorize(Roles = "Cliente")]
         public IActionResult Delete([FromRoute] int idCarrinho, [FromRoute] int idItem, [FromServices] DataBase dataBase)
         {
             var carrinhoRemover = dataBase.Carrinho.Where(x => x.Id == idCarrinho);
@@ -48,6 +52,7 @@ namespace CodeShop.Controllers
         }
 
         [HttpDelete]
+        [Authorize(Roles = "Cliente")]
         public IActionResult DeleteAll([FromServices] DataBase dataBase)
         {
             var itemRemover = dataBase.Carrinho;

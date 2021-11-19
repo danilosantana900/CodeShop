@@ -6,6 +6,5 @@ namespace CodeShop.Repository.DataModel
     {
         public int Id { get; set; }
         public virtual ICollection<Item> Itens { get; set; }
-
     }
 }

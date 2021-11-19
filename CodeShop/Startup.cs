@@ -50,6 +50,7 @@ namespace CodeShop
             app.UseRouting();
 
             app.UseAuthentication();
+
             app.UseAuthorization();
             
             app.UseEndpoints(endpoints =>

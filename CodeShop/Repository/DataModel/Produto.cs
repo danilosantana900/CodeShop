@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace CodeShop.Repository.DataModel
+﻿namespace CodeShop.Repository.DataModel
 {
     public class Produto
     {
