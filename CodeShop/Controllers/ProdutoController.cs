@@ -18,6 +18,7 @@ namespace CodeShop.Controllers
         public IActionResult GetAll([FromServices] DataBase dataBase)
         {
             var result = dataBase.Produto.ToList();
+
             if (result.Any())
             {
                 return Ok(result);
@@ -107,6 +108,4 @@ namespace CodeShop.Controllers
             return Ok();
         }
     }
-
-
 }
