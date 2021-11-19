@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "0779f822-d85a-4fc5-907c-06ad0dde6857",
+		"_postman_id": "e668e478-aef7-4bbd-b8ab-8d649a99cbf1",
 		"name": "CodeShop",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -10,6 +10,9 @@
 			"item": [
 				{
 					"name": "Usuarios",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -23,6 +26,15 @@
 						},
 						"method": "GET",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "http://localhost:4936/api/Usuario",
 							"protocol": "http",
@@ -50,7 +62,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id\": 2,\r\n    \"nome\": \"Melissa\",\r\n    \"senha\": \"senha4\",\r\n    \"cargo\": \"\"\r\n}",
+							"raw": "{\r\n    \"nome\": \"Debora\",\r\n    \"senha\": \"senha2\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -58,12 +70,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:4936/api/account/login",
+							"raw": "http://localhost:5000/api/account/login",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "4936",
+							"port": "5000",
 							"path": [
 								"api",
 								"account",
@@ -325,6 +337,213 @@
 							"path": [
 								"api",
 								"Carrinho"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Produto",
+			"item": [
+				{
+					"name": "ByName",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IkRlYm9yYSIsInJvbGUiOiJGdW5jaW9uYXJpbyIsIm5iZiI6MTYzNzI4NDY2MywiZXhwIjoxNjM3Mjg4MjYzLCJpYXQiOjE2MzcyODQ2NjN9.KVMOP7n8_3LhQlxlYwfuBrPGCpq8wIqplN-XAaX01c0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/Produto/Teclado",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"Produto",
+								"Teclado"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ById",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IkRlYm9yYSIsInJvbGUiOiJGdW5jaW9uYXJpbyIsIm5iZiI6MTYzNzI4NDY2MywiZXhwIjoxNjM3Mjg4MjYzLCJpYXQiOjE2MzcyODQ2NjN9.KVMOP7n8_3LhQlxlYwfuBrPGCpq8wIqplN-XAaX01c0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/Produto/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"Produto",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deletar Produtos",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IkRlYm9yYSIsInJvbGUiOiJGdW5jaW9uYXJpbyIsIm5iZiI6MTYzNzI4NDY2MywiZXhwIjoxNjM3Mjg4MjYzLCJpYXQiOjE2MzcyODQ2NjN9.KVMOP7n8_3LhQlxlYwfuBrPGCpq8wIqplN-XAaX01c0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/Produto/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"Produto",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Produtos",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IkRlYm9yYSIsInJvbGUiOiJGdW5jaW9uYXJpbyIsIm5iZiI6MTYzNzI4NDY2MywiZXhwIjoxNjM3Mjg4MjYzLCJpYXQiOjE2MzcyODQ2NjN9.KVMOP7n8_3LhQlxlYwfuBrPGCpq8wIqplN-XAaX01c0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/Produto",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"Produto"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Adicionar Produtos",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6Ik1lbGlzc2EiLCJyb2xlIjoiQWRtaW4iLCJuYmYiOjE2MzY5OTk0MTEsImV4cCI6MTYzNzAwMzAxMSwiaWF0IjoxNjM2OTk5NDExfQ.TbV_EoSAIiIeB8F83tQsc1qPagUDdhO9Y8qTJO48cV8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Nome\": \"Notebook\",\r\n    \"Descricao\": \"Notebook Dell\",\r\n    \"Valor\": 2500\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/Produto",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"Produto"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Alteração Produto",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IkRlYm9yYSIsInJvbGUiOiJGdW5jaW9uYXJpbyIsIm5iZiI6MTYzNzI4NDY2MywiZXhwIjoxNjM3Mjg4MjYzLCJpYXQiOjE2MzcyODQ2NjN9.KVMOP7n8_3LhQlxlYwfuBrPGCpq8wIqplN-XAaX01c0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"Mouse\",\r\n    \"descricao\": \"Mouse sem fio\",\r\n    \"valor\": 52.5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/Produto/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"Produto",
+								"2"
 							]
 						}
 					},
