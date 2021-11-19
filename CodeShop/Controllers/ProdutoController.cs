@@ -17,7 +17,7 @@ namespace CodeShop.Controllers
         [Authorize(Roles = "Funcionario")]
         public IActionResult GetAll([FromServices] DataBase dataBase)
         {
-            var result = dataBase.Usuario.ToList();
+            var result = dataBase.Produto.ToList();
             if (result.Any())
             {
                 return Ok(result);
@@ -28,25 +28,25 @@ namespace CodeShop.Controllers
             }
         }
 
-        [HttpGet]
+        //[HttpGet("{name}")]
+        //[Authorize(Roles = "Funcionario")]
+        //public IActionResult GetByName([FromRoute] string name, [FromServices] DataBase dataBase)
+        //{
+        //    var result = dataBase.Produto.Where(x => x.Nome == name);
+
+        //    if (result.Any())
+        //        return Ok(result);
+        //    else
+        //        return StatusCode(204, string.Empty);
+        //}
+
+        [HttpGet("{id}")]
         [Authorize(Roles = "Funcionario")]
-        public IActionResult GetByName([FromRoute] string name, [FromServices] DataBase dataBase)
+        public IActionResult GetById([FromRoute] int id, [FromServices] DataBase dataBase)
         {
-            var result = dataBase.Produto.Where(x => x.Nome == name);
+            var result = dataBase.Produto.Where(x => x.Id == id).FirstOrDefault();
 
-            if (result.Any())
-                return Ok(result);
-            else
-                return StatusCode(204, string.Empty);
-        }
-
-        [HttpGet]
-        [Authorize(Roles = "Funcionario")]
-        public IActionResult GetById([FromRoute][FromServices] DataBase dataBase)
-        {
-            var result = dataBase.Produto.Include(x => x.Id).Select(x => x);
-
-            if (result.Any())
+            if (result != null)
                 return Ok(result);
             else
                 return StatusCode(204, string.Empty);
@@ -66,19 +66,27 @@ namespace CodeShop.Controllers
 
 
         [HttpPatch("{id}")]
-        public IActionResult Patch([FromRoute] int id, [FromBody] Usuario usuario, [FromServices] DataBase dataBase)
+        [Authorize(Roles = "Funcionario")]
+        public IActionResult Patch([FromRoute] int id, [FromBody] Produto produto, [FromServices] DataBase dataBase)
         {
-            if (string.IsNullOrWhiteSpace(usuario.Nome))
-                return StatusCode(400, $"Missing Parameter {nameof(usuario.Nome)}");
+            if (string.IsNullOrWhiteSpace(produto.Nome))
+                return StatusCode(400, $"Missing Parameter {nameof(produto.Nome)}");
 
-            var personDb = dataBase.Usuario.Where(x => x.Id == id).FirstOrDefault();
+            if (produto.Valor <= 0)
+                return StatusCode(400, $"Missing Value {nameof(produto.Valor)}");
 
-            if (personDb == null)
-                return StatusCode(404, $"Person id {id} does not exist");
+            var productDb = dataBase.Produto.Where(x => x.Id == id).FirstOrDefault();
 
-            personDb.Nome = usuario.Nome;
-           
-            dataBase.Update(personDb);
+            if (productDb == null)
+                return StatusCode(404, $"Product id {id} does not exist");
+
+            productDb.Nome = produto.Nome;
+
+            productDb.Descricao = produto.Descricao;
+
+            productDb.Valor = produto.Valor;
+
+            dataBase.Update(productDb);
 
             dataBase.SaveChanges();
 
@@ -87,11 +95,12 @@ namespace CodeShop.Controllers
 
 
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Funcionario")]
         public IActionResult Delete([FromRoute] int id, [FromServices] DataBase dataBase)
         {
-            var peopleToRemove = dataBase.Usuario.Where(x => x.Id == id);
+            var productToRemove = dataBase.Produto.Where(x => x.Id == id).FirstOrDefault();
 
-            dataBase.Usuario.RemoveRange(peopleToRemove);
+            dataBase.Produto.RemoveRange(productToRemove);
 
             dataBase.SaveChanges();
 
