@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "8078bb2a-dbd3-4291-a5b0-d615506a790d",
+		"_postman_id": "d5a01613-e225-45de-8d08-2ff1dc8d01f7",
 		"name": "CodeShop",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -36,12 +36,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:4936/api/Usuario",
+							"raw": "http://localhost:5000/api/Usuario",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "4936",
+							"port": "5000",
 							"path": [
 								"api",
 								"Usuario"
@@ -62,7 +62,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"nome\": \"Debora\",\r\n    \"senha\": \"senha2\"\r\n}",
+							"raw": "{\r\n    \"nome\": \"Joao\",\r\n    \"senha\": \"senha3\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -219,7 +219,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6Ik1lbGlzc2EiLCJyb2xlIjoiQWRtaW4iLCJuYmYiOjE2MzY5OTk0MTEsImV4cCI6MTYzNzAwMzAxMSwiaWF0IjoxNjM2OTk5NDExfQ.TbV_EoSAIiIeB8F83tQsc1qPagUDdhO9Y8qTJO48cV8",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IkpvYW8iLCJyb2xlIjoiQ2xpZW50ZSIsIm5iZiI6MTYzNzM3MzQ5OSwiZXhwIjoxNjM3Mzc3MDk5LCJpYXQiOjE2MzczNzM0OTl9.lZ0Y6PH5Etxc1Tx6kXaWGNeeDt2Rl3XRcuUE-ejCwCU",
 									"type": "string"
 								}
 							]
@@ -228,7 +228,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"Itens\":[\r\n        {\r\n            \"Produto\": {\r\n                \"Nome\": \"Notebook\",\r\n                \"Descricao\": \"Notebook Dell\",\r\n                \"Valor\": 2500\r\n            },\r\n            \"Quantidade\": 5\r\n        },\r\n        {\r\n            \"Produto\": {\r\n                \"Nome\": \"Fone de Ouvido\",\r\n                \"Descricao\": \"Fone de Ouvido Gamer\",\r\n                \"Preco\": 360\r\n            },\r\n            \"Quantidade\": 3\r\n        },\r\n        {\r\n            \"Produto\": {\r\n                \"Nome\": \"Microfone\",\r\n                \"Descricao\": \"Microfone Gamer\",\r\n                \"Preco\": 450\r\n            },\r\n            \"Quantidade\": 1\r\n        }\r\n    ]\r\n}",
+							"raw": "{\r\n    \"Itens\":[\r\n        {\r\n            \"Produto\": {\r\n                \"Nome\": \"Teclado\",\r\n                \"Descricao\": \"Melhor teclado gamer do mercado\",\r\n                \"Valor\": 212.50\r\n            },\r\n            \"Quantidade\": 5\r\n        },\r\n        {\r\n            \"Produto\": {\r\n                \"Nome\": \"Mouse\",\r\n                \"Descricao\": \"Mouse preto\",\r\n                \"Preco\": 52.50\r\n            },\r\n            \"Quantidade\": 3\r\n        }\r\n    ]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -313,14 +313,14 @@
 					"response": []
 				},
 				{
-					"name": "Listar Produtos",
+					"name": "Listar Carrinho",
 					"request": {
 						"auth": {
 							"type": "bearer",
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6Ik1lbGlzc2EiLCJyb2xlIjoiQWRtaW4iLCJuYmYiOjE2MzY5OTk0MTEsImV4cCI6MTYzNzAwMzAxMSwiaWF0IjoxNjM2OTk5NDExfQ.TbV_EoSAIiIeB8F83tQsc1qPagUDdhO9Y8qTJO48cV8",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IkpvYW8iLCJyb2xlIjoiQ2xpZW50ZSIsIm5iZiI6MTYzNzM3MzQ5OSwiZXhwIjoxNjM3Mzc3MDk5LCJpYXQiOjE2MzczNzM0OTl9.lZ0Y6PH5Etxc1Tx6kXaWGNeeDt2Rl3XRcuUE-ejCwCU",
 									"type": "string"
 								}
 							]
@@ -337,6 +337,37 @@
 							"path": [
 								"api",
 								"Carrinho"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Checkout",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IkpvYW8iLCJyb2xlIjoiQ2xpZW50ZSIsIm5iZiI6MTYzNzM3MzQ5OSwiZXhwIjoxNjM3Mzc3MDk5LCJpYXQiOjE2MzczNzM0OTl9.lZ0Y6PH5Etxc1Tx6kXaWGNeeDt2Rl3XRcuUE-ejCwCU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/Carrinho/checkout",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"Carrinho",
+								"checkout"
 							]
 						}
 					},

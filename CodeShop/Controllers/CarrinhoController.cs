@@ -28,20 +28,25 @@ namespace CodeShop.Controllers
         }
 
         [HttpGet]
+        [Route("checkout")]
         [Authorize(Roles = "Cliente")]
         public IActionResult GetCheckOut([FromServices] DataBase dataBase)
         {
-            var result = dataBase.Carrinho.Include(x => x.Itens).ToList();
+            var carrinhos = dataBase.Carrinho.Include(x => x.Itens).ThenInclude(i => i.Produto).ToList();
 
-            var sum = 0;
 
-            foreach (var index in result)
+            foreach (var carrinho in carrinhos)
             {
-                sum += index.Itens.Select(x => x.Produto;
+                foreach (var item in carrinho.Itens)
+                {
+                    carrinho.Total += item.Quantidade * item.Produto.Valor;
+                }
+                
             }
-            if (result.Any())
+            if (carrinhos.Any())
             {
-                return Ok(result);
+                return Ok(carrinhos);
+                
             }
             else
             {
@@ -54,11 +59,11 @@ namespace CodeShop.Controllers
         public IActionResult Post([FromBody] Carrinho carrinho, [FromServices] DataBase dataBase)
         {
             var produtosCarrinho = carrinho.Itens.Select(x => x.Produto).Select(x => x.Nome).ToList();
-            foreach (var itm in produtosCarrinho)
-            {
-                if (!dataBase.Produto.Select(x => x.Nome).Equals(itm))
-                    return StatusCode(404, "Um dos produtos selecionados não está disponível");
-            }
+            //foreach (var itm in produtosCarrinho)
+            //{
+            //    if (!dataBase.Produto.Select(x => x.Nome).Equals(itm))
+            //        return StatusCode(404, "Um dos produtos selecionados não está disponível");
+            //}
             dataBase.Add(carrinho);
 
             dataBase.SaveChanges();
