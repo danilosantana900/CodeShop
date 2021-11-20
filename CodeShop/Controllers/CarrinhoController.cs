@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Linq;
 
 namespace CodeShop.Controllers
@@ -26,10 +27,38 @@ namespace CodeShop.Controllers
             }
         }
 
+        [HttpGet]
+        [Authorize(Roles = "Cliente")]
+        public IActionResult GetCheckOut([FromServices] DataBase dataBase)
+        {
+            var result = dataBase.Carrinho.Include(x => x.Itens).ToList();
+
+            var sum = 0;
+
+            foreach (var index in result)
+            {
+                sum += index.Itens.Select(x => x.Produto;
+            }
+            if (result.Any())
+            {
+                return Ok(result);
+            }
+            else
+            {
+                return StatusCode(204, string.Empty);
+            }
+        }
+
         [HttpPost]
         [Authorize(Roles = "Cliente")]
         public IActionResult Post([FromBody] Carrinho carrinho, [FromServices] DataBase dataBase)
         {
+            var produtosCarrinho = carrinho.Itens.Select(x => x.Produto).Select(x => x.Nome).ToList();
+            foreach (var itm in produtosCarrinho)
+            {
+                if (!dataBase.Produto.Select(x => x.Nome).Equals(itm))
+                    return StatusCode(404, "Um dos produtos selecionados não está disponível");
+            }
             dataBase.Add(carrinho);
 
             dataBase.SaveChanges();
