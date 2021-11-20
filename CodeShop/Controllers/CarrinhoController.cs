@@ -59,11 +59,12 @@ namespace CodeShop.Controllers
         public IActionResult Post([FromBody] Carrinho carrinho, [FromServices] DataBase dataBase)
         {
             var produtosCarrinho = carrinho.Itens.Select(x => x.Produto).Select(x => x.Nome).ToList();
-            //foreach (var itm in produtosCarrinho)
-            //{
-            //    if (!dataBase.Produto.Select(x => x.Nome).Equals(itm))
-            //        return StatusCode(404, "Um dos produtos selecionados não está disponível");
-            //}
+            foreach (var itm in produtosCarrinho)
+            {
+                var produtos = dataBase.Produto.Select(x => x.Nome).ToList().Contains(itm);
+                if(!produtos)
+                    return StatusCode(404, $"O produto {itm} não está disponível. Selecione apenas produtos disponíveis.");
+            }
             dataBase.Add(carrinho);
 
             dataBase.SaveChanges();
